@@ -3,11 +3,6 @@ import json
 sys.path.append("src")
 from inkylayout import InkyLayout
 
-# content of test_sample.py
-def func(x):
-    return x + 1
-
-
 def test_onerow_onecol_matchessnapshot(snapshot):
     layout = InkyLayout(100,100)
     layout.add_row("row1")
@@ -15,7 +10,7 @@ def test_onerow_onecol_matchessnapshot(snapshot):
     result = layout.render()
     snapshot.assert_match(json.dumps(result), 'snapshot.txt')
 
-def test_onerow_threecols_numberrowscorrect():
+def test_onerow_threecols_numberrowscorrect(snapshot):
     layout = InkyLayout(90,100)
     layout.add_row("row1")
     layout.add_col("row1",{"value":"testval1"})
@@ -25,7 +20,14 @@ def test_onerow_threecols_numberrowscorrect():
     print(result)
     assert len(result['rows']) == 1
     assert len(result['rows'][0]['cols']) == 3
-    assert result['rows'][0]['cols'][0]['width'] == 30
+    assert result['rows'][0]['cols'][0]['x'] == 0
+    assert result['rows'][0]['cols'][1]['x'] == 30
+    assert result['rows'][0]['cols'][2]['x'] == 60
+    
+    assert result['rows'][0]['cols'][0]['y'] == 0
+    assert result['rows'][0]['cols'][1]['y'] == 0
+    assert result['rows'][0]['cols'][2]['y'] == 0
+    snapshot.assert_match(json.dumps(result), 'snapshot.txt')
 
 def test_tworows_numberrowscorrect():
     layout = InkyLayout(90,100)
