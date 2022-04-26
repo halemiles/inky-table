@@ -41,7 +41,7 @@ jobs:
         ls -la .  
         echo '----'
         ls -la src
-        coverage xml
+        coverage
     - uses: actions/checkout@v2
     - name: Run codacy-coverage-reporter
       uses: codacy/codacy-coverage-reporter-action@v1
