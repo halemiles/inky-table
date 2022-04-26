@@ -36,8 +36,7 @@ jobs:
         flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
     - name: Test with pytest
       run: |
-        pytest
-        coverage xml
+        pytest        
     - uses: actions/checkout@v2
     - name: Run codacy-coverage-reporter
       uses: codacy/codacy-coverage-reporter-action@v1
