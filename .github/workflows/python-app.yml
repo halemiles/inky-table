@@ -39,4 +39,4 @@ jobs:
         pytest
         coverage run -m pytest
         coverage report
-        
+        bash <(curl -Ls https://coverage.codacy.com/get.sh)
