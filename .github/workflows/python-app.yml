@@ -37,7 +37,7 @@ jobs:
     - name: Test with pytest
       run: |
         pytest
-        coverage
+        coverage xml
         ls -la .  
         echo '----'
         ls -la src
