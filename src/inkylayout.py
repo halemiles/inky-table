@@ -1,5 +1,4 @@
 #!/bin/python
-import json
 
 class InkyLayout():
 
@@ -10,7 +9,7 @@ class InkyLayout():
     def add_row(self, rowname):
         self.layout["rows"].append({"name":rowname, "cols":[]})
 
-    def add_col(self, rowname, *cols):        
+    def add_col(self, rowname, *cols):
         rowindex = -1
         try:
             for row in range(len(self.layout['rows'])):

@@ -1,5 +1,4 @@
 import sys
-import pytest
 import json
 sys.path.append("src")
 from inkylayout import inky_layout
@@ -28,7 +27,7 @@ def test_onerow_threecols_numberrowscorrect():
     assert len(result['rows'][0]['cols']) == 3
     assert result['rows'][0]['cols'][0]['width'] == 30
 
-def test_towrow_numberrowscorrect():
+def test_tworows_numberrowscorrect():
     layout = inky_layout(90,100)
     layout.add_row("row1")
     layout.add_row("row2")
