@@ -22,8 +22,8 @@ class InkyLayout():
                     rowindex = row
             for col in cols:
                 self.layout['rows'][rowindex]['cols'].append(col)
-        except:
-            print("Please check that rows exist")
+        except IndexError:
+             print("Please check that rows exist")
 
     def render(self):
         """Generate a JSON object for use with InkyPHAT"""
