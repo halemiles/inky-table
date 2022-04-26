@@ -37,11 +37,11 @@ jobs:
     - name: Test with pytest
       run: |
         pytest
-        
+        coverage
         ls -la .  
         echo '----'
         ls -la src
-        coverage
+        
     - uses: actions/checkout@v2
     - name: Run codacy-coverage-reporter
       uses: codacy/codacy-coverage-reporter-action@v1
