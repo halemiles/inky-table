@@ -1,15 +1,20 @@
 #!/bin/python
 
 class InkyLayout():
-
+    """
+    InkyLayout class to generate a JSON string 
+    containing x/y co-ords and values to be consumed by the InkyPHAT framework
+    """
     layout = {}
     def __init__(self, width, height):
         self.layout = {"width":width, "height":height, "rows":[]}
 
     def add_row(self, rowname):
+        """Add a row including rowname. Must be added in order to create columns"""
         self.layout["rows"].append({"name":rowname, "cols":[]})
 
     def add_col(self, rowname, *cols):
+        """ Add a column to an existing row"""
         rowindex = -1
         try:
             for row in range(len(self.layout['rows'])):
@@ -20,10 +25,8 @@ class InkyLayout():
         except:
             print("Please check that rows exist")
 
-    def verify_definition(self):
-        return False
-
     def render(self):
+        """Generate a JSON object for use with InkyPHAT"""
         items = {"width":self.layout['width'], "height":self.layout['height'], "rows":[]}
         max_width = self.layout['width']
         rows = self.layout['rows']
