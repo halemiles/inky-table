@@ -36,4 +36,16 @@ jobs:
         flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
     - name: Test with pytest
       run: |
-        pytest       
+        pytest
+        coverage xml -o cobertura.xml
+        ls -la .  
+        echo '----'
+        ls -la src
+    - uses: actions/checkout@v2
+    - name: Run codacy-coverage-reporter
+      uses: codacy/codacy-coverage-reporter-action@v1
+      with:
+        project-token: ${{ secrets.CODACY_PROJECT_TOKEN }}
+        # or
+        # api-token: ${{ secrets.CODACY_API_TOKEN }}
+        coverage-reports: src/cobertura.xml
