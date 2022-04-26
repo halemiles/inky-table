@@ -36,8 +36,7 @@ jobs:
         flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
     - name: Test with pytest
       run: |
-        pytest
-        coverage xml
+        pytest --cov=src --cov-report=xml
         ls -la .  
         echo '----'
         ls -la src
@@ -49,4 +48,4 @@ jobs:
         project-token: ${{ secrets.CODACY_PROJECT_TOKEN }}
         # or
         # api-token: ${{ secrets.CODACY_API_TOKEN }}
-        coverage-reports: src/cobertura.xml
+        coverage-reports: src/coverage.xml
