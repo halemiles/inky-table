@@ -39,9 +39,8 @@ jobs:
         pytest --cov=src --cov-report=xml
         ls -la .  
         echo '----'
-        ls -la src
-        
-    - uses: actions/checkout@v2
+        ls -la src       
+    
     - name: Run codacy-coverage-reporter
       uses: codacy/codacy-coverage-reporter-action@v1
       with:
