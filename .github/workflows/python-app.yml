@@ -37,8 +37,7 @@ jobs:
     - name: Test with pytest
       run: |
         pytest
-        coverage run -m pytest
-        coverage report
+        coverage xml
     - uses: actions/checkout@v2
     - name: Run codacy-coverage-reporter
       uses: codacy/codacy-coverage-reporter-action@v1
@@ -46,4 +45,4 @@ jobs:
         project-token: ${{ secrets.CODACY_PROJECT_TOKEN }}
         # or
         # api-token: ${{ secrets.CODACY_API_TOKEN }}
-        coverage-reports: cobertura.xml
+        coverage-reports: src/coverage.xml
