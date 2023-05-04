@@ -38,8 +38,10 @@ class InkyLayout():
             col_width = max_width / len(cols)
             for col in range(len(cols)):
                 colvalue = cols[col]['value']
+                colour = cols[col].get('colour', 1)
+                bg_colour = cols[col].get('backcolour', 1)
                 x = int(col_width * col)
-                appended_cols.append({"value":colvalue,"width":col_width, "x":x, "y":y})
+                appended_cols.append({"value":colvalue,"width":col_width, "x":x, "y":y, "colour":colour, "backcolour":bg_colour})
             appended_rows.append({"name":"test","cols":appended_cols})
         items['rows'] = appended_rows
         return  items
